@@ -5,22 +5,36 @@ import {
   RouterProvider,
   Route,
   Link,
+  Outlet,
 } from "react-router-dom";
 import Products from "./routes/Products";
 import Home from "./routes/Home";
 import Reports from "./routes/Reports";
+import Navbar from "./components/Navbar";
+import "./App.css";
+const Layout = () => (
+  <>
+    <Navbar />
+    <Outlet />
+  </>
+);
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "products",
-    element: <Products />,
-  },
-  {
-    path: "reports",
-    element: <Reports />,
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "products",
+        element: <Products />,
+      },
+      {
+        path: "reports",
+        element: <Reports />,
+      },
+    ],
   },
 ]);
 

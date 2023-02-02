@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "../App.css";
 import { IconContext } from "react-icons";
+
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
 
-  const showSidebar = () => setSidebar(sidebar);
+  const showSidebar = () => setSidebar(!sidebar);
   return (
     <>
       <IconContext.Provider value={{ color: "undefined" }}>
@@ -28,6 +29,7 @@ function Navbar() {
               return (
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
+                    {item.Icons}
                     <span>{item.title}</span>
                   </Link>
                 </li>
